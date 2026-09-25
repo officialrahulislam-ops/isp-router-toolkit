@@ -1,0 +1,44 @@
+name: isp_router_toolkit
+description: Unified router management app for ISP field technicians.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # Networking
+  http: ^1.2.1
+  dio: ^5.4.3+1                     # cookie-jar / interceptor support, needed by several router web-UIs
+  network_info_plus: ^5.0.3         # phone IP, gateway, SSID, subnet
+  connectivity_plus: ^6.0.3         # wifi/mobile/none status
+  dart_ping: ^9.0.1                 # gateway reachability probe
+
+  # Security / storage
+  flutter_secure_storage: ^9.2.2    # Android Keystore-backed storage
+  crypto: ^3.0.3
+
+  # State management
+  provider: ^6.1.2
+
+  # UI
+  google_fonts: ^6.2.1
+  flutter_svg: ^2.0.10+1
+
+  # Utilities
+  html: ^0.15.4                     # parsing router HTML for fingerprinting
+  logger: ^2.3.0                    # structured logging (sanitized, see core/errors)
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: ^5.4.4
+  build_runner: ^2.4.11
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
