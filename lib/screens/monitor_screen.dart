@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../core/format.dart';
+import '../core/latency_stats.dart';
 import '../core/theme.dart';
 import '../services/latency_monitor.dart';
 import '../widgets/latency_chart.dart';

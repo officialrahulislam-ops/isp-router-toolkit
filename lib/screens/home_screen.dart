@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import '../core/format.dart';
+import '../core/latency_stats.dart';
 import '../core/theme.dart';
 import '../models/wifi_snapshot.dart';
 import '../services/latency_monitor.dart';
