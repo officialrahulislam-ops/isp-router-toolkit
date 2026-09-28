@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'core/theme/app_theme.dart';
-import 'routers/router_manager.dart';
-import 'screens/discovery/discovery_screen.dart';
+import 'core/theme.dart';
+import 'screens/home_shell.dart';
+import 'services/latency_monitor.dart';
+import 'services/network_controller.dart';
+import 'services/password_store.dart';
+import 'services/wifi_service.dart';
 
 void main() {
-  runApp(const IspRouterApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const IspHelperApp());
 }
 
-class IspRouterApp extends StatelessWidget {
-  const IspRouterApp({super.key});
+class IspHelperApp extends StatelessWidget {
+  const IspHelperApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => RouterManager()),
+        ChangeNotifierProvider(create: (_) => NetworkController(WifiService())),
+        ChangeNotifierProvider(create: (_) => LatencyMonitor()),
+        ChangeNotifierProvider(create: (_) => PasswordStore()..load()),
       ],
       child: MaterialApp(
-        title: 'ISP Router Toolkit',
+        title: 'ISP Helper',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light(),
         darkTheme: AppTheme.dark(),
         themeMode: ThemeMode.system,
-        home: const DiscoveryScreen(),
+        home: const HomeShell(),
       ),
     );
   }
